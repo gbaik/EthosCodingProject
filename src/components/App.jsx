@@ -3,10 +3,7 @@ import File from './File.jsx'
 
 const App = () => (
   <div >
-    {fileData.map(file => 
-    <File test={file}/>
-    )
-    }
+    {<File fileData={fileData}/>}
   </div>
 )
 

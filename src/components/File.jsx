@@ -1,24 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class File extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div >
-        {this.props.test.children ? this.props.test.children.map(file => {
-          console.log(file.name);
-          if (file.children) {
-             return(file.children.map(child => 
-              <File test={child} flag={false}/>
-            ))
-          }
-        }) : <div></div>}
-      </div>
-    );
-  }
+const File = ({fileData}) => {
+  return (
+    <div>
+      {fileData.children ? fileData.children.map(file => {
+        console.log(file);
+        if (file.children) {
+          return(file.children.map(child => 
+            <File fileData={child}/>
+          ))
+        }
+      }) : <div></div>}
+    </div>
+  );
 }
 
 export default File;
