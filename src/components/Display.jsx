@@ -56,11 +56,16 @@ class Display extends Component {
             this.toggleFolder();
           }}>-</button>
         }
-        <div onClick={() => {
-          this.expandFolder(this.props.fileData, this.props.index)
-          this.toggleFolder()
-        }}>{this.props.fileData.name}</div>
-        {this.children}
+        {this.state.toggle ? 
+         <div onClick={() => {
+          this.expandFolder(this.props.fileData, this.props.index);
+          this.toggleFolder();
+          }}>{this.props.fileData.name}</div> :
+          <div onClick={() => {
+            this.closeFolder();
+            this.toggleFolder();
+          }}>{this.props.fileData.name}</div>
+        }
         {this.children.map((child, index) => {   
           return (<Display 
             fileData={child} 
