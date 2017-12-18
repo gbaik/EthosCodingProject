@@ -8,9 +8,9 @@ const File = ({fileData}) => {
         if (file.children) {
           return(file.children.map(child => 
             <div>
-              <File fileData={child}/>
               <Display fileData={file} />
               <Display fileData={child} />              
+              <File fileData={child}/>
             </div>
           ))
         } else {
