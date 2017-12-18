@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
+import File from './File.jsx'
 
-class App extends Component {
-  render() {
-    return (
-      <div >
-        <header>
-          <h1>Hello World</h1>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div >
+    {fileData.map(file => 
+       <File test={file}/>
+    )}
+  </div>
+)
 
 export default App;
