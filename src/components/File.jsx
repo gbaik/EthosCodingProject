@@ -5,44 +5,46 @@ import Display from './Display.jsx'
 class File extends Component { 
   constructor(props) { 
     super(props);
-    console.log(props.fileData);
-    this.state = {
-      fileData: props.fileData
-    }
+
+    this.fileData = [props.fileData.children];
 
     this.expandFolder = this.expandFolder.bind(this);
   }
 
-  expandFolder(el) {
-    console.log(el);
-    this.setState({
-      fileData: el
-    })
+  expandFolder(fileData, index) {
+    // var nestedFolder = document.getElementById(index);    
+    // if (fileData.children) {
+    //   fileData.children.forEach(child => {        
+    //     nestedFolder.innerHTML += (`${<Display />}`);
+    //     console.log(child);
+    //     this.fileData.push(child);
+    //   })
+    // }
+    console.log(this.fileData);
   }
+
 
   render() {
     return (
-      <div>
-        {this.state.fileData.children ? this.state.fileData.children.map(file => {
-          if (file.children && this.state.expand) {
-            return(file.children.map(child => 
-              <div>
-                <Display fileData={file} />
-                <Display fileData={child} />              
-                <File fileData={child}/>
-              </div>
-            ))
-          } else {
-            return (
-              <div>
-                <Display fileData={file} expandFolder={this.expandFolder}/>
-              </div>
-            )                
-          }
-        }) : <div></div>}
+      <div >
+        {this.props.fileData.children.map((file, index) => {
+          return (
+            <div id={index}>
+              <Display 
+                fileData={file} 
+                expandFolder={this.expandFolder} 
+                index={index} key={index}
+              />
+            </div>
+          )                
+        })}
+        {this.fileData.map((file) => {
+          console.log(file);
+        })}
       </div>
     );
   };
 }
 
 export default File;
+
