@@ -1,4 +1,3 @@
-// const Display = ({fileData, toggleFolder, toggle, expandFolder, index}) 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -19,7 +18,6 @@ class Display extends Component {
 
   expandFolder(fileData, index) {
     if (fileData.children) {
-      console.log(fileData);
       fileData.children.map((child) => {
         this.children.push(child)
       })
@@ -66,6 +64,7 @@ class Display extends Component {
             this.toggleFolder();
           }}>{this.props.fileData.name}</div>
         }
+
         {this.children.map((child, index) => {   
           return (<Display 
             fileData={child} 
@@ -77,6 +76,5 @@ class Display extends Component {
     );
   };
 }
-
 
 export default Display;
