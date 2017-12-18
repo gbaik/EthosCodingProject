@@ -7,33 +7,47 @@ class Display extends Component {
     super(props);
     
     this.state = {
-      toggle: true 
+      toggle: true,
+      color: 'none'
     }
 
     this.toggleFolder = this.toggleFolder.bind(this);    
   }
   
   toggleFolder() {
+    var color = '#0E9BD1'
+
+    if (!this.state.toggle) {
+      color = 'white'
+    }
+
+    console.log(color);
     this.setState({
-      toggle: !this.state.toggle
+      toggle: !this.state.toggle,
+      color: color
     })
   }
 
+
   render() {
+    // var style = 
     return (
-      <div>
+      <div style={{backgroundColor: this.state.color}}>
         {this.state.toggle ? 
           <button onClick={() => {
             this.props.expandFolder(this.props.fileData, this.props.index);
             this.toggleFolder();
           }}>+</button> :  
           <button onClick={() => {
+            // closeFolder();  
             this.toggleFolder();
-            // closeFolder();          
           }}>-</button>
         }
-        <div onClick={() => this.props.expandFolder(this.props.fileData, this.props.index)}>{this.props.fileData.name}</div>
-        {console.log(this.state.toggle)}
+        <div onClick={() => {
+          this.props.expandFolder(this.props.fileData, this.props.index)
+          this.toggleFolder()
+        }}>{this.props.fileData.name}</div>
+        {console.log(this.state)}
       </div>
     );
   };

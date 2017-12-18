@@ -12,21 +12,24 @@ class File extends Component {
   }
 
   expandFolder(fileData, index) {
-    // var nestedFolder = document.getElementById(index);    
-    // if (fileData.children) {
-    //   fileData.children.forEach(child => {        
-    //     nestedFolder.innerHTML += (`${<Display />}`);
-    //     console.log(child);
-    //     this.fileData.push(child);
-    //   })
-    // }
-    console.log(this.fileData);
+    var nestedFolder = document.getElementById(index);   
+
+
+    if (fileData.children) {
+      fileData.children.forEach(child => {        
+        // nestedFolder.innerHTML += (`${<Display />}`);
+        console.log(child);
+        // this.fileData.push(child);
+      })
+    }
+
+    console.log(index);
   }
 
 
   render() {
     return (
-      <div >
+      <div className="topFolder">
         {this.props.fileData.children.map((file, index) => {
           return (
             <div id={index}>
