@@ -5,10 +5,7 @@ import File from './File.jsx'
 
 const App = () => (
   <div >
-    {
-    <File fileData={fileData}/>
-    
-    }
+    {<File fileData={fileData}/>}
   </div>
 )
 

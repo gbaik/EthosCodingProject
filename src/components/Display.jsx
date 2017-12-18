@@ -11,9 +11,21 @@ class Display extends Component {
       color: 'none'
     }
 
+    this.children = [];
+
+    this.expandFolder = this.expandFolder.bind(this);    
     this.toggleFolder = this.toggleFolder.bind(this);    
   }
-  
+
+  expandFolder(fileData, index) {
+    if (fileData.children) {
+      console.log(fileData);
+      fileData.children.map((child) => {
+        this.children.push(child)
+      })
+    }
+  }
+
   toggleFolder() {
     var color = '#0E9BD1'
 
@@ -21,22 +33,19 @@ class Display extends Component {
       color = 'white'
     }
 
-    console.log(color);
     this.setState({
       toggle: !this.state.toggle,
       color: color
     })
   }
 
-
   render() {
-    // var style = 
     return (
       <div style={{backgroundColor: this.state.color}}>
         {this.state.toggle ? 
           <button onClick={() => {
-            this.props.expandFolder(this.props.fileData, this.props.index);
-            this.toggleFolder();
+            this.expandFolder(this.props.fileData, this.props.index);
+            this.toggleFolder(this.props.fileData);
           }}>+</button> :  
           <button onClick={() => {
             // closeFolder();  
@@ -44,10 +53,17 @@ class Display extends Component {
           }}>-</button>
         }
         <div onClick={() => {
-          this.props.expandFolder(this.props.fileData, this.props.index)
+          this.expandFolder(this.props.fileData, this.props.index)
           this.toggleFolder()
         }}>{this.props.fileData.name}</div>
-        {console.log(this.state)}
+        {this.children}
+        {this.children.map((child, index) => {   
+          return (<Display 
+            fileData={child} 
+            index={index} 
+            key={index}
+          />)
+        })}
       </div>
     );
   };
