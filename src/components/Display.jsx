@@ -1,9 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-const Display = ({fileData}) => {
+const Display = ({fileData, expandFolder}) => {
   return (
     <div>
-      <h1>Helo</h1>
+      <button onClick={() => expandFolder(fileData)}>+</button>
+      <h1>{fileData.name}</h1>
       {console.log(fileData.name)}
     </div>
   );
