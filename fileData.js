@@ -1,4 +1,4 @@
-window.fileData = [{
+window.fileData = {
   "children": [
     {
       "name": "Main Folder",
@@ -104,4 +104,4 @@ window.fileData = [{
       ]
     }
   ]
-}]
+}
