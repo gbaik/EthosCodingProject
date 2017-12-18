@@ -39,6 +39,10 @@ class Display extends Component {
     })
   }
 
+  closeFolder() {
+    this.children = [];
+  }
+
   render() {
     return (
       <div style={{backgroundColor: this.state.color}}>
@@ -48,7 +52,7 @@ class Display extends Component {
             this.toggleFolder(this.props.fileData);
           }}>+</button> :  
           <button onClick={() => {
-            // closeFolder();  
+            this.closeFolder();  
             this.toggleFolder();
           }}>-</button>
         }
