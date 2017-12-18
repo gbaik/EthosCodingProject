@@ -32,8 +32,7 @@ class Display extends Component {
             // closeFolder();          
           }}>-</button>
         }
-        <h1 onClick={this.props.expandFolder(this.props.fileData, this.props.index)}>{this.props.fileData.name}</h1>
-        <h1>yep</h1>
+        <div onClick={() => this.props.expandFolder(this.props.fileData, this.props.index)}>{this.props.fileData.name}</div>
         {console.log(this.state.toggle)}
       </div>
     );
