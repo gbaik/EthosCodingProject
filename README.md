@@ -5,6 +5,14 @@ This exercise is to build a folder and file explorer (or a tree control). You mu
 Please do not use an off-the-shelf tree control packages or any CSS frameworks (like Bootstrap or Foundation) since that would
 defeat the purpose of this project!
 
+### How to begin
+1.) In terminal, from the root directory:
+```
+npm install
+npm start
+```
+2.) Open index.html
+
 ## Requirements
 
 ### Application
